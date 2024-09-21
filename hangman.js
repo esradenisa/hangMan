@@ -25,13 +25,17 @@ function guessLetter() {
     wordElement.textContent = hiddenWord.join(" ");
     livesElement.textContent = remainingLives;
 
+    checkGameState();
+
+    input.value = "";
+    input.focus();
+}
+
+function checkGameState() {
     if (hiddenWord.join("") === wordToGuess) {
         messageElement.textContent = "Congratulations! You won!";
         gameWon = true;
     } else if (remainingLives <= 0) {
         messageElement.textContent = "You lost! The word was: " + wordToGuess;
     }
-
-    input.value = "";
-    input.focus();
 }
